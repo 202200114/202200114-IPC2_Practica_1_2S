@@ -31,7 +31,7 @@ String es inmutable y siempre se sobre escribe un dato en él, el StringBuilder 
 Así que para crear el código utilizamos ambas clases y datos normales
 un String que contiene los caracteres permitidos
 Y un for para que el random seleccione n veces uno de los caracteres, al tomar al  String de los caracteres
- y seleccionar uno de sus caracteres aleatoriamente.
+ y seleccionar uno de sus caracteres aleatoriamente.  ID
 
  */
     
@@ -106,7 +106,18 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
             Console.WriteLine("2. Gestionar un paciente ya registrado\n");
             Console.WriteLine("3. Salir del programa\n");
             Console.Write("\n\n\n Elija la opción que desee ");
-            int Opcion =  int.Parse(Console.ReadLine());
+
+
+            int Opcion = 0;
+            try
+            {
+               Opcion = int.Parse(Console.ReadLine());
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Error: lo que escribiste no es un número válido");
+                //entra al switch y se va al dedefault por lo que no es necesario incluir break aquí
+            }
 
 
             switch (Opcion)
@@ -122,7 +133,19 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
                     Console.WriteLine("5. Volver a la interfaz principal");
                     Console.Write("\n\n\n Elija la opción que desee ");
 
-                    int Option = int.Parse(Console.ReadLine());
+
+
+                    int Option = 0;
+                    try
+                    {
+                        Option = int.Parse(Console.ReadLine());
+                    }  catch (FormatException)
+                    {
+                        Console.WriteLine("Error: lo que escribiste no es un número válido, regresando a la interfaz");
+                        break; //Se sale del while
+                    }
+                    
+
                     switch (Option)
                     {
                         case 1:
@@ -132,27 +155,68 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
                             Console.WriteLine("Ingrese el nombre del paciente");
                             string N1 = Console.ReadLine();
 
-                            Console.WriteLine("Ingrese el peso del paciente");
-                            int P1 = int.Parse(Console.ReadLine());
 
+
+
+                            Console.WriteLine("Ingrese el peso del paciente");
+
+
+                            int P1 = 0;
+                            try
+                            {
+                                P1 = int.Parse(Console.ReadLine());
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine(
+                                    "Error: lo que escribiste no es un número válido, regresando a la interfaz");
+                                break; //Se sale del while
+                            }
 
                             Console.WriteLine("Ingrese el sexo del paciente");
                             string S1 = Console.ReadLine();
 
 
-                            Console.WriteLine("Ingrese la edad del paciente");
-                            int E1 = int.Parse(Console.ReadLine());
 
+                            Console.WriteLine("Ingrese la edad del paciente");
+
+                            int E1 = 0;
+
+                            try
+                            {
+                                E1 = int.Parse(Console.ReadLine());
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine(
+                                    "Error: lo que escribiste no es un número válido, regresando a la interfaz");
+                                break; //Se sale del while
+                            }
 
                             Console.WriteLine("Ingrese el nombre del propietario del paciente");
                             string Pe1 = Console.ReadLine();
+
+
 
 
                             Console.WriteLine("Seleccione una de las 2 opciones para el Estado del paciente" +
                                               "\n Ingrese 1 si el paciente esta Sano, Ingrese 2 si el paciente esta enfermo");
 
 
-                            int Estado_Opcion = int.Parse(Console.ReadLine());
+                            int Estado_Opcion = 0;
+                            try
+                            {
+                                Estado_Opcion = int.Parse(Console.ReadLine());
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine(
+                                    "Error: lo que escribiste no es un número válido, regresando a la interfaz");
+                                break; //Se sale del while
+                            }
+
+
+
                             string Es1 = "enfermo";
                             if (Estado_Opcion == 1)
                             {
@@ -184,7 +248,21 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
                                               "ha sido vacunado contra la rabia");
 
 
-                            int Vacuna_Opcion = int.Parse(Console.ReadLine());
+                            int Vacuna_Opcion = 0;
+
+                            try
+                            {
+                                Vacuna_Opcion = int.Parse(Console.ReadLine());
+
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine(
+                                    "Error: lo que escribiste no es un número válido, regresando a la interfaz");
+                                break; //Se sale del while
+                            }
+
+
                             bool V1 = false;
                             if (Vacuna_Opcion == 1)
                             {
@@ -217,17 +295,39 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
                             string N2 = Console.ReadLine();
 
 
-
                             Console.WriteLine("Ingrese el peso del paciente");
-                            int P2 = int.Parse(Console.ReadLine());
 
+                            int P2 = 0;
+                            try
+                            {
+                                P2 = int.Parse(Console.ReadLine());
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine(
+                                    "Error: lo que escribiste no es un número válido, regresando a la interfaz");
+                                break; //Se sale del while
+                            }
 
                             Console.WriteLine("Ingrese el sexo del paciente");
                             string S2 = Console.ReadLine();
 
 
                             Console.WriteLine("Ingrese la edad del paciente");
-                            int E2 = int.Parse(Console.ReadLine());
+
+
+                            int E2 = 0;
+
+                            try
+                            {
+                                E2 = int.Parse(Console.ReadLine());
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine(
+                                    "Error: lo que escribiste no es un número válido, regresando a la interfaz");
+                                break; //Se sale del while
+                            }
 
 
                             Console.WriteLine("Ingrese el nombre del propietario del paciente");
@@ -238,7 +338,20 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
                                               "\n Ingrese 1 si el paciente esta Sano, Ingrese 2 si el paciente esta enfermo");
 
 
-                            int Estado_Opcion2 = int.Parse(Console.ReadLine());
+                            int Estado_Opcion2 = 0;
+
+                            try
+                            {
+                                Estado_Opcion2 = int.Parse(Console.ReadLine());
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine(
+                                    "Error: lo que escribiste no es un número válido, regresando a la interfaz");
+                                break; //Se sale del while
+                            }
+
+
                             string Es2 = "enfermo";
                             if (Estado_Opcion2 == 1)
                             {
@@ -260,8 +373,6 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
                             Console.WriteLine("Ingrese la raza del paciente");
                             string R2 = Console.ReadLine();
 
-
-
                             Mascota Gato1 = new Gato(N2, P2, S2, E2, Pe2, C2, Es2, R2);
                             Mascotas.Add(Gato1);
                             break;
@@ -273,7 +384,20 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
                             string N3 = Console.ReadLine();
 
                             Console.WriteLine("Ingrese el peso del paciente");
-                            int P3 = int.Parse(Console.ReadLine());
+
+
+                            int P3 = 0;
+
+                            try
+                            {
+                                P3 = int.Parse(Console.ReadLine());
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine(
+                                    "Error: lo que escribiste no es un número válido, regresando a la interfaz");
+                                break; //Se sale del while
+                            }
 
 
                             Console.WriteLine("Ingrese el sexo del paciente");
@@ -281,7 +405,18 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
 
 
                             Console.WriteLine("Ingrese la edad del paciente");
-                            int E3 = int.Parse(Console.ReadLine());
+
+                            int E3 = 0;
+                            try
+                            {
+                                E3 = int.Parse(Console.ReadLine());
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine(
+                                    "Error: lo que escribiste no es un número válido, regresando a la interfaz");
+                                break; //Se sale del while
+                            }
 
 
                             Console.WriteLine("Ingrese el nombre del propietario del paciente");
@@ -292,7 +427,18 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
                                               "\n Ingrese 1 si el paciente esta Sano, Ingrese 2 si el paciente esta enfermo");
 
 
-                            int Estado_Opcion3 = int.Parse(Console.ReadLine());
+                            int Estado_Opcion3 = 0;
+                            try
+                            {
+                                Estado_Opcion3 = int.Parse(Console.ReadLine());
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine(
+                                    "Error: lo que escribiste no es un número válido, regresando a la interfaz");
+                                break; //Se sale del while
+                            }
+
                             string Es3 = "enfermo";
                             if (Estado_Opcion3 == 1)
                             {
@@ -317,7 +463,20 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
                                               "\n Ingrese 1 si el paciente puede volar, Ingrese 2 si el paciente no puede volar");
 
 
-                            int Volar = int.Parse(Console.ReadLine());
+                            int Volar = 0;
+                            try
+                            {
+                                Volar = int.Parse(Console.ReadLine());
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine(
+                                    "Error: lo que escribiste no es un número válido, regresando a la interfaz");
+                                break; //Se sale del while
+                            }
+
+
+
                             bool V2 = true;
                             if (Volar == 1)
                             {
@@ -335,7 +494,7 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
                                 Console.WriteLine("ingreso invalido, se definirá que el ave si puede volar, verificar");
                             }
 
-  
+
                             Mascota Ave1 = new Ave(N3, P3, S3, E3, Pe3, C3, Es3, V2);
                             Mascotas.Add(Ave1);
                             break;
@@ -345,8 +504,22 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
                             Console.WriteLine("Ingrese el nombre del paciente");
                             string N4 = Console.ReadLine();
 
+
                             Console.WriteLine("Ingrese el peso del paciente");
-                            int P4 = int.Parse(Console.ReadLine());
+
+
+
+                            int P4 = 0;
+                            try
+                            {
+                                P4 = int.Parse(Console.ReadLine());
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine(
+                                    "Error: lo que escribiste no es un número válido, regresando a la interfaz");
+                                break; //Se sale del while
+                            }
 
 
                             Console.WriteLine("Ingrese el sexo del paciente");
@@ -354,10 +527,21 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
 
 
                             Console.WriteLine("Ingrese la edad del paciente");
-                            int E4 = int.Parse(Console.ReadLine());
 
 
-                            Console.WriteLine("Ingrese el nombre del propietario del paciente");
+                            int E4 = 0;
+                            try
+                            {
+                               E4 = int.Parse(Console.ReadLine());
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine("Error: lo que escribiste no es un número válido, regresando a la interfaz");
+                                break; //Se sale del while
+                            }
+
+
+                    Console.WriteLine("Ingrese el nombre del propietario del paciente");
                             string Pe4 = Console.ReadLine();
 
 
@@ -365,7 +549,21 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
                                               "\n Ingrese 1 si el paciente esta Sano, Ingrese 2 si el paciente esta enfermo");
 
 
-                            int Estado_Opcion4 = int.Parse(Console.ReadLine());
+
+
+                            int Estado_Opcion4 = 0;
+                            
+                            try
+                            {
+                               Estado_Opcion4 = int.Parse(Console.ReadLine());
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine("Error: lo que escribiste no es un número válido, regresando a la interfaz");
+                                break; //Se sale del while
+                            }
+                            
+                            
                             string Es4 = "enfermo";
                             if (Estado_Opcion4 == 1)
                             {
@@ -470,7 +668,7 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
 
                               while (Out)
                               {
-                                  Console.WriteLine("\n Paciente {ID} ");
+                                  Console.WriteLine($"\n Paciente {ID} ");
                                   Console.WriteLine("\n Seleccione lo que desea hacer");
                                   Console.WriteLine("\n 1. Mostrar su información");
                                   Console.WriteLine("\n 2. Calcular su dosis");
@@ -478,7 +676,16 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
                                   Console.WriteLine("\n 4. Volver al Menú de Selección de Paciente");
 
 
-                                  int Op = int.Parse(Console.ReadLine());
+                                  int Op = 0;
+                                  try
+                                  {
+                                     Op = int.Parse(Console.ReadLine());
+                                  }   catch (FormatException)
+                                  {
+                                      Console.WriteLine("Error: lo que escribiste no es un número válido, regresando a la interfaz");
+                                      break; //Se sale del while
+                                  }
+
                                   switch (Op)
                                   {
                                       case 1:
@@ -494,10 +701,19 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
                                           
                                           
                                           Console.WriteLine("Ingrese la dosis recomendada para el paciente ");
-                                          
-                                          
-                                          
-                                          double Dosis = int.Parse(Console.ReadLine());
+
+
+
+                                          double Dosis = 0;
+                                          try
+                                          {
+                                             Dosis = double.Parse(Console.ReadLine());
+                                          }
+                                          catch (FormatException)
+                                          {
+                                              Console.WriteLine("Error: lo que escribiste no es un número válido, regresando a la interfaz");
+                                              break; //Se sale del while
+                                          }
 
                                           double Dosis1 =  mascota.Calcular_Dosis(Dosis);
                                           
@@ -509,7 +725,19 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
                                           Console.WriteLine(
                                               "Para cambiar el estado del paciente, ingrese 1 para sano y 2 para enfermo");
 
-                                          int Seleccion = int.Parse(Console.ReadLine());
+
+
+                                          int Seleccion = 0;
+                                          try
+                                          {
+                                             Seleccion = int.Parse(Console.ReadLine());
+                                          }
+                                          catch (FormatException)
+                                          {
+                                              Console.WriteLine("Error: lo que escribiste no es un número válido, regresando a la interfaz");
+                                              break; //Se sale del while
+                                          }
+                                          
                                           bool estado = true;
                                           if (Seleccion == 1)
                                           {
@@ -550,7 +778,18 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
                               Console.WriteLine("¿Desea salir del Menú De Selección de Paciente? Si desea salir ingrese 1, " +
                                                 "si desaea permanecer ingrese 2");
 
-                              int Select = int.Parse(Console.ReadLine());
+
+
+                              int Select = 0;
+                              try
+                              {
+                                  Select = int.Parse(Console.ReadLine());
+                              }
+                              catch (FormatException)
+                              {
+                                  Console.WriteLine("Error: lo que escribiste no es un número válido, regresando a la interfaz");
+                                  break; //Se sale del while
+                              }
 
                               if (Select == 1)
                               {
@@ -604,4 +843,6 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
     
 }
 
-
+/* El proyecto se realizo por elaboración propia, apoyado por ejemplos de clase, trabajos anteriores de IPC2 como lo fue la practica 1 del semestre
+ pasado y el apoyo de copilot y gemini, como lo fue su apoyo en entender que no se podia crear el metodo Generar Codigo no siendo estatico
+ tenia que volverse un metodo estatico para poder funcionar dentro del metodo estatico Interfaz, al final todo funciono a las mil maravillas */
