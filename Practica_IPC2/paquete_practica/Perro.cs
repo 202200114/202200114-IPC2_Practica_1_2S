@@ -6,9 +6,9 @@ class Perro: Mascota
     private string Tamanio;
     private string Raza;
     private string Vacuna_Antirabica;
-    private double Dosis;
+    private double Dosis = 0;
     
-    public Perro(String nombre, int peso, string sexo, int edad, string propietario, string codigo, string estado, string tamanio, string raza, bool vacuna, double dosis) :
+    public Perro(String nombre, int peso, string sexo, int edad, string propietario, string codigo, string estado, string tamanio, string raza, bool vacuna) :
         base(nombre, peso, sexo, edad, propietario, codigo, estado)
     {
         
@@ -23,17 +23,38 @@ class Perro: Mascota
         }
         this.Tamanio = tamanio;
         this.Raza = raza;
-        this.Dosis = dosis;
+
         
         
     }
 
-    public override double Calcular_Dosis() => Dosis * this.Peso ;
+    public override double Calcular_Dosis(double dosis_por_Kg)
+    {
 
+        this.Dosis = dosis_por_Kg  * this.Peso;
+        
+        return this.Dosis;
+    }
+
+    public string DosisMostrar()
+    {
+        if (this.Dosis == 0)
+        {
+            return "Todavía no se recetado una medicina";
+        }
+
+        else {
+
+            return "es: " + this.Dosis + " mg/kg";
+        }
+    }
+
+    
+    
     public override void Mostrar_Info_2()
     {
         
-        Console.WriteLine($"Raza: {this.Raza}  Tamanio: {this.Tamanio} Dosis recomendada: {Calcular_Dosis()} mg/kg" +
+        Console.WriteLine($"Raza: {this.Raza}  Tamanio: {this.Tamanio} Dosis recomendada: {DosisMostrar()} " +
                           $" \n  ¿Tiene la vacuna antirabica? {this.Vacuna_Antirabica}   "  );
 
     }

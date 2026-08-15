@@ -44,7 +44,7 @@ abstract class Mascota
         this.Estado = estado;
     }
 
-    public abstract double Calcular_Dosis();
+    public abstract double Calcular_Dosis(double dosis_por_Kg);
 //La variable booleana se escribe bool no boolean
     public void Cambiar_Estado(bool estado)
     {

@@ -96,7 +96,6 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
     static void Interfaz()
     {
         
-        
         bool Salir = true;
 
         while (Salir)
@@ -204,12 +203,8 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
                                     "ingreso invalido, se colocará el estado del paciente como no vacunado, verificar");
                             }
 
-                            Console.WriteLine("Ingrese la dosis del paciente");
-                            int D1 = int.Parse(Console.ReadLine());
 
-
-
-                            Mascota Mascota1 = new Perro(N1, P1, S1, E1, Pe1, C1, Es1, T1, R1, V1, D1);
+                            Mascota Mascota1 = new Perro(N1, P1, S1, E1, Pe1, C1, Es1, T1, R1, V1);
 
                             Mascotas.Add(Mascota1);
 
@@ -266,10 +261,8 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
                             string R2 = Console.ReadLine();
 
 
-                            Console.WriteLine("Ingrese la dosis del paciente");
-                            int D2 = int.Parse(Console.ReadLine());
 
-                            Mascota Gato1 = new Gato(N2, P2, S2, E2, Pe2, C2, Es2, R2, D2);
+                            Mascota Gato1 = new Gato(N2, P2, S2, E2, Pe2, C2, Es2, R2);
                             Mascotas.Add(Gato1);
                             break;
 
@@ -342,11 +335,8 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
                                 Console.WriteLine("ingreso invalido, se definirá que el ave si puede volar, verificar");
                             }
 
-                            Console.WriteLine("Ingrese la dosis del paciente");
-                            int D3 = int.Parse(Console.ReadLine());
-
-
-                            Mascota Ave1 = new Ave(N3, P3, S3, E3, Pe3, C3, Es3, V2, D3);
+  
+                            Mascota Ave1 = new Ave(N3, P3, S3, E3, Pe3, C3, Es3, V2);
                             Mascotas.Add(Ave1);
                             break;
                         case 4:
@@ -398,10 +388,9 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
                             string R4 = Console.ReadLine();
 
 
-                            Console.WriteLine("Ingrese la dosis del paciente");
-                            int D4 = int.Parse(Console.ReadLine());
 
-                            Mascota Tortuga = new Tortuga(N4, P4, S4, E4, Pe4, C4, Es4, R4, D4);
+
+                            Mascota Tortuga = new Tortuga(N4, P4, S4, E4, Pe4, C4, Es4, R4);
                             Mascotas.Add(Tortuga);
 
                             break;
@@ -445,6 +434,16 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
                               string ID = Console.ReadLine();
                               ;
                               bool Out = true;
+                              
+                              
+                              /*SUPER importante, al estar usando una lista estatica, static y al estar tomando esta instancia vacía de Mascota
+                               al momento de luego, igualar mascota con la Mascota Paciente de la lista Mascotas del for each
+                               estamos apuntando ahora a esa misma instancia por lo cual si modificamos la instancia mascota, modificaremos
+                            dicha instancia  PERO POR ESO MISMO hay que ser muy cuidadoso, ya que si modificamos mascota, modificamos la instancia de la lista
+                               por lo que hay que ser cuidadosos, aquí no hay problema pq al reiniciarse o salirse del ciclo while y declararse
+                               de nuevo Mascota mascota = null ahora es una nuev ainstancia que no esta apuntando a la instancia ya modificada
+                               aún así hay que ser cuidadosos*/
+                              
                               
                               Mascota mascota = null;
                               
@@ -492,8 +491,18 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
                                           break;
 
                                       case 2:
-                                          Console.WriteLine("La dosis recomendada para el paciente es: ");
-                                          mascota.Calcular_Dosis();
+                                          
+                                          
+                                          Console.WriteLine("Ingrese la dosis recomendada para el paciente ");
+                                          
+                                          
+                                          
+                                          double Dosis = int.Parse(Console.ReadLine());
+
+                                          double Dosis1 =  mascota.Calcular_Dosis(Dosis);
+                                          
+                                          Console.WriteLine("La dosis recomendada es: "+Dosis1);
+
                                           break;
 
                                       case 3:
@@ -504,12 +513,12 @@ Y un for para que el random seleccione n veces uno de los caracteres, al tomar a
                                           bool estado = true;
                                           if (Seleccion == 1)
                                           {
-                                              estado = true;
+                                              mascota.Cambiar_Estado(estado); 
 
                                           }
                                           else if (Seleccion == 2)
                                           {
-                                              estado = false;
+                                              mascota.Cambiar_Estado(false); 
 
                                           }
                                           else

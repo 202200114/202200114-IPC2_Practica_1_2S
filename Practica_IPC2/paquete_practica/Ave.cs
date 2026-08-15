@@ -5,7 +5,7 @@ class Ave: Mascota
     private String Vuelo;
     private double Dosis;
 
-    public Ave(String nombre, int peso, string sexo, int edad, string propietario, string codigo, string estado, bool vuelo, double dosis) :
+    public Ave(String nombre, int peso, string sexo, int edad, string propietario, string codigo, string estado, bool vuelo) :
         base(nombre, peso, sexo, edad, propietario, codigo, estado)
     {
 
@@ -18,16 +18,38 @@ class Ave: Mascota
             Vuelo = "No, no puede volar";
         }
         
-        this.Dosis = dosis;
+
         
     }
     
-    public override double Calcular_Dosis() => Dosis * 0.5 * this.Peso ;
+    public override double Calcular_Dosis(double dosis_por_Kg)
+    {
+
+        this.Dosis = dosis_por_Kg * 0.5 * this.Peso;
+        
+        return this.Dosis;
+    }
+    
+    public string DosisMostrar()
+    {
+        if (this.Dosis == 0)
+        {
+            return "Todavía no se recetado una medicina" ;
+        }
+
+        else {
+
+            return "es: " + this.Dosis + " mg/kg" ;
+        }
+    }
+
+    
+    
 
     public override void Mostrar_Info_2()
     {
         
-        Console.WriteLine($"¿Puede volar la mascota?: {this.Vuelo}  Dosis recomendada: {Calcular_Dosis()} mg/kg");
+        Console.WriteLine($"¿Puede volar la mascota?: {this.Vuelo}  Dosis recomendada: {DosisMostrar()} ");
 
     }
 
